@@ -3,10 +3,13 @@ package com.iagocarvalho.valorantapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.iagocarvalho.valorantapp.navigate.ValorantScreensNavitaionfun
 import com.iagocarvalho.valorantapp.ui.Screen.AgentsValorantScreen
 import com.iagocarvalho.valorantapp.ui.Screen.AgentsValorantViewModel
 import com.iagocarvalho.valorantapp.ui.theme.ValorantAppTheme
@@ -21,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AgentsValorantScreen(viewModel = AgentsValorantViewModel())
+                    ValorantScreensNavitaionfun()
                 }
             }
         }
