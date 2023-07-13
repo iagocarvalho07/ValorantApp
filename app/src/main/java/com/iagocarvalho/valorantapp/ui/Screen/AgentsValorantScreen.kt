@@ -18,14 +18,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -37,7 +36,8 @@ import okhttp3.internal.userAgent
 @Composable
 fun AgentsValorantScreen(
     navController: NavController,
-    viewModel: AgentsValorantViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+    viewModel: AgentsValorantViewModel = viewModel()
+) {
 
     val valorantCards by viewModel.valorantAgents.observeAsState(null)
 
@@ -56,14 +56,20 @@ fun AgentsValorantScreen(
             LazyColumn {
                 items(valorantCards!!.data) { valorantCards ->
                     CreditCardItem(
-                        navController =navController,
+                        navController = navController,
                         name = valorantCards.displayName,
                         description = valorantCards.description,
                         displayIcon = valorantCards.displayIcon
                     )
+                    Button(onClick = { navController.navigate(ValorantScreensNavitaion.DetahlesScreen.name) }) {
+
+                    }
+
                     Text(text = valorantCards.abilities[0].slot)
                     Text(text = valorantCards.abilities[0].displayName)
                     Text(text = valorantCards.abilities[0].description)
+                    AsyncImage(model = valorantCards.abilities[0].displayIcon, contentDescription = "", colorFilter = ColorFilter.tint(
+                        Color.LightGray))
                 }
             }
         }
@@ -100,9 +106,6 @@ fun CreditCardItem(
             )
             Spacer(modifier = Modifier.height(8.dp))
             AsyncImage(model = displayIcon, contentDescription = "")
-            Button(onClick = { navController.navigate(ValorantScreensNavitaion.DetahlesScreen.name) }) {
-                Text(text = "go to Detalhes")
-            }
 
         }
     }

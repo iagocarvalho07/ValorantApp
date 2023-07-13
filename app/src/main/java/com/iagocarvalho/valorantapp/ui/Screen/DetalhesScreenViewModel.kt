@@ -9,18 +9,18 @@ import com.iagocarvalho.valorantapp.model.Responses.Data
 import com.iagocarvalho.valorantapp.model.ValorantRespository
 import kotlinx.coroutines.launch
 
-class DetalhesViewModel(): ViewModel() {
+class DetalhesScreenViewModel(data: Data):ViewModel() {
 
-    private val respository = ValorantRespository()
+    private val Detalhesrespository = ValorantRespository()
 
-    private val _ValorantDetalhes = MutableLiveData<List<Data>>()
-    val ValorantDetalhes: LiveData<List<Data>> = _ValorantDetalhes
+    private val _valorantAgents = MutableLiveData<Data>()
+    val valorantAgents: LiveData<Data> = _valorantAgents
 
-    fun fetDetalhesValorant(){
+    fun fetDetalhesValorantAgents(){
         viewModelScope.launch {
             try {
-                val agents = respository.getDetalhesValorant()
-                _ValorantDetalhes.value = agents
+                val agents = Detalhesrespository.getDetalhesValorant()
+                _valorantAgents.value = agents
             }catch (e: Exception){
                 Log.d("EXC", "fetValorantAgents: ${e.message.toString()}")
             }

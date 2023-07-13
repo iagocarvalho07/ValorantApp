@@ -12,8 +12,8 @@ class ValorantRespository() {
         return valorantAgentsRepo.getCreditCars()
     }
 
-    suspend fun getDetalhesValorant(): List<Data> {
-        return valorantAgentsRepo.getCreditCars().data
+    suspend fun getDetalhesValorant(): Data{
+        return valorantAgentsRepo.getDetalhes()
     }
 
 }

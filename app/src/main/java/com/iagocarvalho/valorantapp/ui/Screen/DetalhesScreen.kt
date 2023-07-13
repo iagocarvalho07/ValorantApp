@@ -1,26 +1,21 @@
 package com.iagocarvalho.valorantapp.ui.Screen
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
 fun DetalhesScreen(
     navController: NavController,
-    viewModel: DetalhesViewModel = viewModel()){
+    viewModel: DetalhesScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 
-    val agentsDetails by viewModel.ValorantDetalhes.observeAsState()
-
-    LaunchedEffect(Unit) {
-        viewModel.fetDetalhesValorant()
+) {
+    val agentsData = viewModel.valorantAgents.observeAsState()
+    Column() {
+        Text(text = agentsData.value!!.uuid)
     }
-
-    agentsDetails?.get(0)?.let { Text(text = it.developerName) }
-
 
 
 }
