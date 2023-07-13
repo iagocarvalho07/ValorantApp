@@ -10,7 +10,7 @@ import com.iagocarvalho.valorantapp.model.Responses.ModelValorant
 import com.iagocarvalho.valorantapp.model.ValorantRespository
 import kotlinx.coroutines.launch
 
-class DetalhesScreenViewModel(data: Data):ViewModel() {
+class DetalhesScreenViewModel():ViewModel() {
 
     private val Detalhesrespository = ValorantRespository()
 

@@ -9,12 +9,14 @@ import androidx.navigation.NavController
 @Composable
 fun DetalhesScreen(
     navController: NavController,
-
+    viewModel: DetalhesScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 
 ) {
+    val valorantDetalhesCards = viewModel.valorantAgents.observeAsState()
 
-
-
+    LaunchedEffect(Unit) {
+        viewModel.fetDetalhesValorantAgents()
+    }
     Text(text = "DetalheScreen")
 
 
