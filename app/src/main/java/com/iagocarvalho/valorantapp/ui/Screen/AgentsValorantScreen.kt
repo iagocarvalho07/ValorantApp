@@ -1,7 +1,5 @@
 package com.iagocarvalho.valorantapp.ui.Screen
 
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,7 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,9 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.iagocarvalho.valorantapp.model.Responses.ModelValorant
 import com.iagocarvalho.valorantapp.navigate.ValorantScreensNavitaion
-import okhttp3.internal.userAgent
 
 @Composable
 fun AgentsValorantScreen(
@@ -61,8 +56,9 @@ fun AgentsValorantScreen(
                         description = valorantCards.description,
                         displayIcon = valorantCards.displayIcon
                     )
-                    Button(onClick = { navController.navigate(ValorantScreensNavitaion.DetahlesScreen.name) }) {
-
+                    Button(
+                        onClick = { navController.navigate(ValorantScreensNavitaion.DetalhesScreen.name) }) {
+                        Text(text = "go to Detalhe Screen")
                     }
 
                     Text(text = valorantCards.abilities[0].slot)

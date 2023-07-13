@@ -1,6 +1,7 @@
 package com.iagocarvalho.valorantapp.navigate
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -18,7 +19,7 @@ fun ValorantScreensNavitaionfun() {
         composable(ValorantScreensNavitaion.AgentsValorantScreen.name) {
             AgentsValorantScreen(navController = navController)
         }
-        composable(ValorantScreensNavitaion.DetahlesScreen.name){
+        composable(ValorantScreensNavitaion.DetalhesScreen.name){
             DetalhesScreen(navController = navController)
         }
 
