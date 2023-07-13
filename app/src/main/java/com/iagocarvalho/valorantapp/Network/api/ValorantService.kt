@@ -7,8 +7,7 @@ import retrofit2.http.GET
 interface ValorantService {
     @GET("agents")
     suspend fun getCreditCars(): ModelValorant
-    @GET("agents")
-    suspend fun getDetalhes(): Data
+
 
 
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iagocarvalho.valorantapp.model.Responses.Data
+import com.iagocarvalho.valorantapp.model.Responses.ModelValorant
 import com.iagocarvalho.valorantapp.model.ValorantRespository
 import kotlinx.coroutines.launch
 
@@ -13,8 +14,8 @@ class DetalhesScreenViewModel(data: Data):ViewModel() {
 
     private val Detalhesrespository = ValorantRespository()
 
-    private val _valorantAgents = MutableLiveData<Data>()
-    val valorantAgents: LiveData<Data> = _valorantAgents
+    private val _valorantAgents = MutableLiveData<List<Data>>()
+    val valorantAgents: LiveData<List<Data>> = _valorantAgents
 
     fun fetDetalhesValorantAgents(){
         viewModelScope.launch {
