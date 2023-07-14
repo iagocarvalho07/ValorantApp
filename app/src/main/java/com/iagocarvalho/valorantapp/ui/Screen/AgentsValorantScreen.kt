@@ -57,15 +57,25 @@ fun AgentsValorantScreen(
                         displayIcon = valorantCards.displayIcon
                     )
                     Button(
-                        onClick = { navController.navigate(ValorantScreensNavitaion.DetalhesScreen.name) }) {
+                        onClick = {
+                            val route = ValorantScreensNavitaion.DetalhesScreen.name + "/${valorantCards.uuid}/${valorantCards.displayName}/${valorantCards.developerName}"
+                            navController.navigate(
+                                route
+                            )
+                        }) {
                         Text(text = "go to Detalhe Screen")
                     }
 
                     Text(text = valorantCards.abilities[0].slot)
                     Text(text = valorantCards.abilities[0].displayName)
                     Text(text = valorantCards.abilities[0].description)
-                    AsyncImage(model = valorantCards.abilities[0].displayIcon, contentDescription = "", colorFilter = ColorFilter.tint(
-                        Color.LightGray))
+                    AsyncImage(
+                        model = valorantCards.abilities[0].displayIcon,
+                        contentDescription = "",
+                        colorFilter = ColorFilter.tint(
+                            Color.LightGray
+                        )
+                    )
                 }
             }
         }

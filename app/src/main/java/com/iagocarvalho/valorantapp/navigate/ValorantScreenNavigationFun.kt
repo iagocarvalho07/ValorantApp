@@ -18,14 +18,39 @@ fun ValorantScreensNavitaionfun() {
         navController = navController,
         startDestination = ValorantScreensNavitaion.AgentsValorantScreen.name
     ) {
-        composable(route = ValorantScreensNavitaion.AgentsValorantScreen.name
+        composable(
+            route = ValorantScreensNavitaion.AgentsValorantScreen.name
 //            route="${ValorantScreensNavitaion.AgentsValorantScreen.name}/{uuid}", arguments = listOf(
 //                navArgument("uuid") { type = NavType.StringType })
+
+
         ) {
             AgentsValorantScreen(navController)
         }
-        composable(ValorantScreensNavitaion.DetalhesScreen.name) {
-            DetalhesScreen(navController = navController)
+        composable(
+            route = ValorantScreensNavitaion.DetalhesScreen.name + "/{uuid}/{displayName}/{developerName}",
+            arguments = listOf(
+                navArgument("uuid") {
+                    type = NavType.StringType
+                    nullable = true
+                },
+                navArgument("displayName") {
+                    type = NavType.StringType
+                    nullable = true
+                },
+                navArgument("developerName") {
+                    type = NavType.StringType
+                    nullable = true
+                }
+
+            )
+        ) {
+            DetalhesScreen(
+                navController = navController,
+                uuid = it.arguments?.getString("uuid") ,
+                displayName = it.arguments?.getString("displayName") ,
+                developerName = it.arguments?.getString("developerName"),
+            )
         }
 
     }
