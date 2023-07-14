@@ -1,8 +1,10 @@
 package com.iagocarvalho.valorantapp.ui.Screen
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavController
 
@@ -12,12 +14,19 @@ fun DetalhesScreen(
     viewModel: DetalhesScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 
 ) {
-    val valorantDetalhesCards = viewModel.valorantAgents.observeAsState()
+    val valorantCards by viewModel.valorantAgents.observeAsState(null)
 
     LaunchedEffect(Unit) {
         viewModel.fetDetalhesValorantAgents()
     }
-    Text(text = "DetalheScreen")
+    valorantCards?.get(0)?.let {
+        Column() {
+            Text(text = it.uuid)
+            Text(text = it.displayName)}
+
+        }
+
+
 
 
    // val agentsData = viewModel.valorantAgents.observeAsState()

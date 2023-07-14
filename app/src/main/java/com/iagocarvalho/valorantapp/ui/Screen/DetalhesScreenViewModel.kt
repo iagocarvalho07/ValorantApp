@@ -20,7 +20,7 @@ class DetalhesScreenViewModel():ViewModel() {
     fun fetDetalhesValorantAgents(){
         viewModelScope.launch {
             try {
-                val agents = Detalhesrespository.getDetalhesValorant()
+                val agents = Detalhesrespository.getDetalhesValorant().data
                 _valorantAgents.value = agents
             }catch (e: Exception){
                 Log.d("EXC", "fetValorantAgents: ${e.message.toString()}")
