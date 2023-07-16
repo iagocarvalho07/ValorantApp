@@ -8,8 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -20,12 +19,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.iagocarvalho.valorantapp.Components.Hexagon
 import com.iagocarvalho.valorantapp.navigate.ValorantScreensNavitaion
 
 @Composable
@@ -35,7 +33,7 @@ fun AgentsValorantScreen(
 ) {
 
     val valorantCards by viewModel.valorantAgents.observeAsState(null)
-
+    val overlap = (-110).dp
     LaunchedEffect(Unit) {
         viewModel.fetValorantAgents()
     }
@@ -48,24 +46,23 @@ fun AgentsValorantScreen(
         if (valorantCards == null) {
             CircularProgressIndicator()
         } else {
-            LazyColumn {
-                items(valorantCards!!.data) { valorantCards ->
-                    CreditCardItem(
-                        navController = navController,
-                        name = valorantCards.displayName,
-                        description = valorantCards.description,
-                        displayIcon = valorantCards.displayIcon
-                    )
-                    Button(
-                        onClick = { navController.navigate(ValorantScreensNavitaion.DetalhesScreen.name) }) {
-                        Text(text = "go to Detalhe Screen")
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(overlap),
+            ) {
+                itemsIndexed(valorantCards!!.data) { index, valorantCards ->
+                    Hexagon(
+                        text = valorantCards.displayName,
+                        Image = valorantCards.displayIcon,
+                        hexagonSize = 200.dp,
+                        index = index,
+                    ) {
+                        val route =
+                            ValorantScreensNavitaion.DetalhesScreen.name + "/${valorantCards.uuid}"
+                        navController.navigate(
+                            route
+                        )
                     }
-
-                    Text(text = valorantCards.abilities[0].slot)
-                    Text(text = valorantCards.abilities[0].displayName)
-                    Text(text = valorantCards.abilities[0].description)
-                    AsyncImage(model = valorantCards.abilities[0].displayIcon, contentDescription = "", colorFilter = ColorFilter.tint(
-                        Color.LightGray))
                 }
             }
         }
