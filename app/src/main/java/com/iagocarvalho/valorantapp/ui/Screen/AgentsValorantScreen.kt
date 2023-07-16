@@ -63,21 +63,6 @@ fun AgentsValorantScreen(
                             route
                         )
                     }
-//                    CreditCardItem(
-//                        navController = navController,
-//                        name = valorantCards.displayName,
-//                        description = valorantCards.description,
-//                        displayIcon = valorantCards.displayIcon
-//                    )
-//                    Button(
-//                        onClick = {
-//                            val route = ValorantScreensNavitaion.DetalhesScreen.name + "/${valorantCards.uuid}"
-//                            navController.navigate(
-//                                route
-//                            )
-//                        }) {
-//                        Text(text = "go to Detalhe Screen")
-//                    }
                 }
             }
         }

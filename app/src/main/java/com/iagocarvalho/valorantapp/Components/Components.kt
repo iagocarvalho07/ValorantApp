@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -32,7 +29,6 @@ import coil.compose.AsyncImage
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
-
 
 @Composable
 fun Hexagon(text: String, Image: String, hexagonSize: Dp, index: Int, DetalheScreen: () -> Unit) {
@@ -96,5 +92,5 @@ fun Hexagon(text: String, Image: String, hexagonSize: Dp, index: Int, DetalheScr
             )
         }
     }
-
 }
+
