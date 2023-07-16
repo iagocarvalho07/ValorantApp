@@ -10,6 +10,9 @@
  
  passagem de parametros activitys, 
 
+ Bibliotecas Utilizadas:
+ Retrofit, coil, navegation, liveData, Coroutines, Compose Material 3
+
 
  
 
