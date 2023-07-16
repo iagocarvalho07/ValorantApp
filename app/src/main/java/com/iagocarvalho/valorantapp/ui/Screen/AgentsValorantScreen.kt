@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -17,13 +18,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.iagocarvalho.valorantapp.Components.Hexagon
+import com.iagocarvalho.valorantapp.model.WeponsApi.Weapons
 import com.iagocarvalho.valorantapp.navigate.ValorantScreensNavitaion
 
 @Composable
@@ -31,11 +36,14 @@ fun AgentsValorantScreen(
     navController: NavController,
     viewModel: AgentsValorantViewModel = viewModel()
 ) {
-
     val valorantCards by viewModel.valorantAgents.observeAsState(null)
     val overlap = (-110).dp
     LaunchedEffect(Unit) {
         viewModel.fetValorantAgents()
+    }
+    Button(onClick = { navController.navigate(ValorantScreensNavitaion.WeaponsScreen.name) }) {
+        Text(text = "go to weapons screen")
+
     }
 
     Column(
