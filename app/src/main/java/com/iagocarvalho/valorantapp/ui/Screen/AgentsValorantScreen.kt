@@ -41,10 +41,6 @@ fun AgentsValorantScreen(
     LaunchedEffect(Unit) {
         viewModel.fetValorantAgents()
     }
-    Button(onClick = { navController.navigate(ValorantScreensNavitaion.WeaponsScreen.name) }) {
-        Text(text = "go to weapons screen")
-
-    }
 
     Column(
         modifier = Modifier.fillMaxSize(),

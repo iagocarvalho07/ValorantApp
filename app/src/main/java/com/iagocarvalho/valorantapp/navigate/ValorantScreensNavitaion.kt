@@ -3,7 +3,10 @@ package com.iagocarvalho.valorantapp.navigate
 enum class ValorantScreensNavitaion {
     AgentsValorantScreen,
     DetalhesScreen,
-    WeaponsScreen;
+    MainScreen,
+    MenuScreem,
+    WeaponsScreen,
+    WeaponsDetalhesScreen;
 
 
     companion object{
@@ -12,6 +15,9 @@ enum class ValorantScreensNavitaion {
             AgentsValorantScreen.name -> AgentsValorantScreen
             DetalhesScreen.name -> DetalhesScreen
             WeaponsScreen.name -> WeaponsScreen
+            MenuScreem.name -> MenuScreem
+            MainScreen.name -> MainScreen
+            WeaponsDetalhesScreen.name -> WeaponsDetalhesScreen
             null -> AgentsValorantScreen
             else -> throw IllegalArgumentException( "Route $route is no recognized")
         }

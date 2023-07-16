@@ -3,22 +3,14 @@ package com.iagocarvalho.valorantapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import com.iagocarvalho.valorantapp.navigate.ValorantScreensNavitaionfun
 import com.iagocarvalho.valorantapp.ui.theme.ValorantAppTheme
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,22 +18,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            brush = Brush.radialGradient(
-                                colors = listOf(
-                                    Color.Black,
-                                    Color.DarkGray,
-                                    Color.Gray
-                                )
-                            )
-                        ), color = Color.DarkGray
+                        .fillMaxSize(),
+                    color = Color.DarkGray
                 ) {
-                    Scaffold() {    contentPadding ->
-                        Box(modifier = Modifier.padding(contentPadding)) { 
-                            
-                        }
-                    }
                     ValorantScreensNavitaionfun()
                 }
             }
