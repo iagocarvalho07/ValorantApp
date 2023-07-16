@@ -1,9 +1,13 @@
 # ValorantApp
  
  App De estudo com Objetivo de treinar:
+ 
  como consumir API
+ 
  MVVM
+ 
  Navegação
+ 
  passagem de parametros activitys, 
 
 
